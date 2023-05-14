@@ -14,8 +14,6 @@ if creds_file is not None:
         f.write(creds_contents)
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "temp_credentials.json"
 
-    vertexai.init(credentials="temp_credentials.json")
-
     option = st.selectbox("Select Your Option", ["Answer Question", "Summarize Text"])
 
     if option == "Answer Question":
@@ -39,7 +37,7 @@ if creds_file is not None:
 
     elif option == "Summarize Text":
         source_text = st.text_area("Source Text", height=200)
-        prompt = 'Provide a summary within 250 words for the following article: \n' + source_text + '\nSummary: '
+        prompt = 'Provide a summary within 200 words for the following article: \n' + source_text + '\nSummary: '
 
         if st.button("Summarize"):
             if not source_text.strip():
