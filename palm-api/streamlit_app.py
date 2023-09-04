@@ -74,7 +74,7 @@ if creds_file is not None:
                 try:
                     with st.spinner('Please wait...'):
                         text = ""
-                        loader = UnstructuredURLLoader(urls=[url])
+                        loader = UnstructuredURLLoader(urls=[url], ssl_verify=False, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"})
                         data = loader.load()
                         for i in range(len(data)):
                             text += data[i].page_content
