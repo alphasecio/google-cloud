@@ -2,10 +2,11 @@ import os, streamlit as st
 from google.cloud import webrisk_v1
 
 # Streamlit app
-st.title('Google Cloud Web Risk API')
+st.subheader('Google Cloud Web Risk API')
 
 # Create a file upload widget for the credentials JSON file
-creds_file = st.file_uploader("Upload Google Cloud credentials file", type="json")
+with st.sidebar:
+    creds_file = st.file_uploader("Upload Google Cloud credentials file", type="json")
 
 # If the user has uploaded a file, read its contents and set the GOOGLE_APPLICATION_CREDENTIALS environment variable
 if creds_file is not None:
