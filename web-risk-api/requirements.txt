@@ -1,4 +1,4 @@
-streamlit==1.22.0
+streamlit==1.30.0
 google-cloud-webrisk==1.11.1
 google-auth==2.22.0
 google-auth-httplib2==0.1.0
