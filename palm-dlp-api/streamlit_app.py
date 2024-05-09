@@ -3,7 +3,7 @@ import vertexai, google.cloud.dlp_v2
 from vertexai.preview.language_models import TextGenerationModel
 
 # Streamlit app
-st.subheader('Summarize Lah!')
+st.subheader('Google PaLM2 + DLP API')
 
 # Create a file upload widget for the credentials JSON file
 with st.sidebar:
@@ -39,7 +39,7 @@ def inspect():
 def summarize():
     with st.spinner("Please wait..."):
         prompt = 'Provide a summary within 200 words for the following article: \n' + source_text + '\nSummary: '
-        model = TextGenerationModel.from_pretrained("text-bison@001")
+        model = TextGenerationModel.from_pretrained("text-bison@002")
         response = model.predict(
             prompt,
             temperature=0.2,
@@ -47,7 +47,7 @@ def summarize():
             top_k=40,
             top_p=0.8,
         )
-        st.success(response)
+        st.success(response.text)
 
 if st.button("Summarize"):
     if creds_file is None:
