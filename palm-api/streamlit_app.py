@@ -1,9 +1,9 @@
 import os, validators, vertexai, streamlit as st
-from langchain.document_loaders import UnstructuredURLLoader
+from langchain_community.document_loaders import UnstructuredURLLoader
 from vertexai.preview.language_models import TextGenerationModel
 
 # Streamlit app
-st.subheader('Palmfish')
+st.subheader("Google PaLM2 API")
 
 # Create a file upload widget for the credentials JSON file
 with st.sidebar:
@@ -28,14 +28,14 @@ if creds_file is not None:
             else:
                 try:
                     with st.spinner('Please wait...'):
-                        model = TextGenerationModel.from_pretrained("text-bison@001")
+                        model = TextGenerationModel.from_pretrained("text-bison@002")
                         response = model.predict(
                             prompt,
                             temperature=0.1,
                             max_output_tokens=256
                         )
 
-                        st.success(response)
+                        st.success(response.text)
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
 
@@ -49,7 +49,7 @@ if creds_file is not None:
             else:
                 try:
                     with st.spinner('Please wait...'):
-                        model = TextGenerationModel.from_pretrained("text-bison@001")
+                        model = TextGenerationModel.from_pretrained("text-bison@002")
                         response = model.predict(
                             prompt,
                             temperature=0.2,
@@ -58,7 +58,7 @@ if creds_file is not None:
                             top_p=0.8,
                         )
 
-                        st.success(response)
+                        st.success(response.text)
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
     
@@ -80,7 +80,7 @@ if creds_file is not None:
                             text += data[i].page_content
                         
                         prompt = 'Provide a summary within 250-300 words for the following article: \n' + text + '\nSummary: '
-                        model = TextGenerationModel.from_pretrained("text-bison@001")
+                        model = TextGenerationModel.from_pretrained("text-bison@002")
                         response = model.predict(
                             prompt,
                             temperature=0.2,
@@ -89,6 +89,6 @@ if creds_file is not None:
                             top_p=0.8,
                         )
 
-                        st.success(response)
+                        st.success(response.text)
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
