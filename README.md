@@ -1,9 +1,6 @@
 # google-cloud
 This repository contains a collection of apps and projects that interact with Google Cloud APIs.
 
-### [cloud-run-summlah](https://github.com/alphasecio/google-cloud/blob/main/cloud-run-summlah)
-A sample Streamlit web application, to be deployed on Google Cloud Run, for summarizing URLs with Google Cloud Vertex AI Gemini API.
-
 ### [gemini-api](https://github.com/alphasecio/google-cloud/blob/main/gemini-api)
 A sample Streamlit web application for generating text and images with Google Cloud Vertex AI Gemini API.
 
