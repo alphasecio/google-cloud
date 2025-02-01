@@ -1,2 +1,2 @@
 streamlit==1.40.2
-google-cloud-aiplatform==1.73.0
+google-cloud-aiplatform==1.79.0
