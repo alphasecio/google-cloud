@@ -11,8 +11,8 @@ with st.sidebar:
 
 prompt = st.text_input("Prompt", label_visibility="collapsed")
 
-# If Generate button is clicked
-if st.button("Generate"):
+# If Submit button is clicked
+if st.button("Submit"):
   if creds_file is None:
     st.error("Please provide the JSON credentials file.")
   elif not google_cloud_project.strip() or not google_cloud_location.strip() or not prompt.strip():
@@ -28,8 +28,8 @@ if st.button("Generate"):
       vertexai.init(project=google_cloud_project, location=google_cloud_location)    
 
       with st.spinner("Please wait..."):
-        # Run Gemini 1.0 Pro model on Google Cloud
-        model = GenerativeModel("gemini-1.0-pro")
+        # Run Gemini 2.0 Flash model on Google Cloud
+        model = GenerativeModel("gemini-2.0-flash")
         responses = model.generate_content(prompt, stream=False)
         st.success(responses.text)      
     except Exception as e:
